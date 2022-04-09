@@ -2,7 +2,9 @@
 title: "Four Cats Code"
 author: "Erin Gillespie"
 date: '2022-04-09'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 Er
 ```{r}
@@ -150,6 +152,8 @@ new_weeks %>%
 ```
 
 ```{r}
+#install.packages("gridExtra")
+library(gridExtra)
 week_zero <- SurveyResults %>%
   filter(weeks == 0)
 week_zero_hist <- week_zero %>%
@@ -163,26 +167,25 @@ week_zero_hist <- week_zero %>%
        	mean(week_zero$s5_mean)),
        	col = "red",
        	size = 4)
-
-week_three <- S5_scores_cleaned %>%
+week_three <- SurveyResults %>%
   filter(weeks == 3)
 week_three_hist <- week_three %>%
   ggplot(mapping = aes(x = S5_mean)) +
   geom_histogram()
 
-week_six <- S5_scores_cleaned %>%
+week_six <- SurveyResults %>%
   filter(weeks == 6)
 week_six_hist <- week_six %>%
   ggplot(mapping = aes(x = S5_mean)) +
   geom_histogram()
 
-week_twelve <- S5_scores_cleaned %>%
+week_twelve <- SurveyResults %>%
   filter(weeks == 12)
 week_twelve_hist <- week_twelve %>%
   ggplot(mapping = aes(x = S5_mean)) +
   geom_histogram()
 
-week_twenty_four <- S5_scores_cleaned %>%
+week_twenty_four <- SurveyResults %>%
   filter(weeks == 24)
 week_twenty_four_hist <- week_twenty_four %>%
   ggplot(mapping = aes(x = S5_mean)) +
